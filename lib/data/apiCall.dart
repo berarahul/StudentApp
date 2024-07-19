@@ -2,11 +2,12 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:studentapp/data/AppUrl.dart';
 import '../model/ClassRoutineModel.dart';
 
 
 Future<Map<String, List<Schedule>>> fetchSchedule() async {
-  final url = 'https://attendancesystem-s1.onrender.com/api/classRoutine/getRoutine?deptId=1&sem=6';  // Replace with your actual API URL
+  final url = AppUrl.fetchRoutine;  // Replace with your actual API URL
 
   final response = await http.get(Uri.parse(url));
 

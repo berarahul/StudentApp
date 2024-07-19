@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:fl_chart/fl_chart.dart'; // Import fl_chart library
 import 'package:get_storage/get_storage.dart';
+import 'package:studentapp/viewmodel/services/dropdownServices/DepartmentController.dart';
+import 'package:studentapp/viewmodel/services/dropdownServices/SemesterController.dart';
 import '../../model/subjectModel.dart';
 import '../../viewmodel/services/studentscreenService/studentScreenSearchController.dart';
+import '../DropDown/DropdownScreenForRoutine.dart';
 
 class SearchScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
@@ -194,6 +197,9 @@ class SearchScreen extends StatelessWidget {
                                               'Max Attendance: ${subject.maxAttendance}',
                                               style: const TextStyle(fontSize: 16),
                                             ),
+                                        const SizedBox(height: 16),
+                                        // Add your new button here
+
                                           ],
                                         ),
                                       ),
@@ -201,11 +207,23 @@ class SearchScreen extends StatelessWidget {
                                   ),
                                 );
                               }),
+                              Center(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Your button action
+                                    Get.to(DropdownScreenForRoutine());
+
+                                  },
+                                  child: Text('Show Routine'),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                     ],
+
                   ),
+
                 ),
               ),
             ],
