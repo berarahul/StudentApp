@@ -1,30 +1,3 @@
-// import 'package:get/get.dart';
-// import '../../../model/alldepartmentModel.dart';
-// import 'DepartmentAPiServices.dart';
-//
-//
-// class DepartmentController extends GetxController {
-//   var isLoading = true.obs;
-//   var departmentList = <DepartmentModel>[].obs;
-//
-//   @override
-//   void onInit() {
-//     fetchDepartments();
-//     super.onInit();
-//   }
-//
-//   void fetchDepartments() async {
-//     try {
-//       isLoading(true);
-//       var departments = await DepartmentService().fetchDepartments();
-//       if (departments != null) {
-//         departmentList.value = departments;
-//       }
-//     } finally {
-//       isLoading(false);
-//     }
-//   }
-// }
 
 
 

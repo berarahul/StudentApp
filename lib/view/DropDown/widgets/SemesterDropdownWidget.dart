@@ -1,35 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import '../../../viewmodel/services/dropdownServices/SemesterController.dart';
-//
-// class SemesterDropdown extends StatelessWidget {
-//   final SemesterController semesterController = Get.find();
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Obx(() {
-//       return DropdownButton<int>(
-//         value: semesterController.selectedSemesterId.value == 0
-//             ? null
-//             : semesterController.selectedSemesterId.value,
-//         hint: Text('Select Semester'),
-//         items: semesterController.semesterList.map((semester) {
-//           return DropdownMenuItem<int>(
-//             value: semester.id,
-//             child: Text(semester.semesterName),
-//           );
-//         }).toList(),
-//         onChanged: (value) {
-//           if (value != null) {
-//             semesterController.selectSemester(value);
-//           }
-//         },
-//       );
-//     });
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../viewmodel/services/dropdownServices/SemesterController.dart';
