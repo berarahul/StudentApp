@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
-import 'package:studentapp/view/StudentRoutine.dart';
-import 'package:studentapp/view/studentDetailsScreen/StudentDetailsScreen.dart';
+
+
+import 'package:studentapp/view/Screens/StudentInfromationCard.dart';
+import 'package:studentapp/view/constant/routes/approutes.dart';
 
 void main() async {
   await GetStorage.init();
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SearchScreen(),
+ home: StudentInformationCard(),
+      getPages: AppRoutes.routes,
     );
   }
 }

@@ -12,7 +12,7 @@ class DepartmentDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (departmentController.isLoading.value) {
-        return CircularProgressIndicator();
+        return const CircularProgressIndicator();
       } else {
         return DropdownButtonFormField<DepartmentModel?>(
           value: departmentController.departmentList.firstWhereOrNull(
@@ -30,18 +30,18 @@ class DepartmentDropdown extends StatelessWidget {
             }
           },
           decoration: InputDecoration(
-            labelText: 'Select Department',
+           hintText: "Select department",
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             filled: true,
             fillColor: Colors.grey.shade200,
           ),
           dropdownColor: Colors.white,
           icon: Icon(Icons.arrow_drop_down),
           iconSize: 30,
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          style: const TextStyle(color: Colors.black, fontSize: 16),
           isExpanded: true,
         );
       }

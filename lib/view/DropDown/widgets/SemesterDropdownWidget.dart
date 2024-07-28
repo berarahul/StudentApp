@@ -13,7 +13,7 @@ class SemesterDropdown extends StatelessWidget {
             ? null
             : semesterController.selectedSemesterId.value,
         decoration: InputDecoration(
-          labelText: 'Select Semester',
+          hintText: "Select semester",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
