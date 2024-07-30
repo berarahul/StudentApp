@@ -5,7 +5,8 @@ import '../../../viewmodel/services/dropdownServices/DepartmentController.dart';
 import '../../../viewmodel/services/dropdownServices/SemesterController.dart';
 
 class DepartmentDropdown extends StatelessWidget {
-  final DepartmentController departmentController = Get.put(DepartmentController());
+  final DepartmentController departmentController =
+      Get.put(DepartmentController());
   final SemesterController semesterController = Get.put(SemesterController());
 
   @override
@@ -16,7 +17,9 @@ class DepartmentDropdown extends StatelessWidget {
       } else {
         return DropdownButtonFormField<DepartmentModel?>(
           value: departmentController.departmentList.firstWhereOrNull(
-                (department) => department.id == departmentController.selectedDepartmentId.value,
+            (department) =>
+                department.id ==
+                departmentController.selectedDepartmentId.value,
           ),
           items: departmentController.departmentList.map((department) {
             return DropdownMenuItem<DepartmentModel>(
@@ -30,11 +33,12 @@ class DepartmentDropdown extends StatelessWidget {
             }
           },
           decoration: InputDecoration(
-           hintText: "Select department",
+            hintText: "Select department",
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             filled: true,
             fillColor: Colors.grey.shade200,
           ),

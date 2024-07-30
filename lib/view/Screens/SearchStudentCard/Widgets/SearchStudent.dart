@@ -4,15 +4,14 @@ import 'package:get/get.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:studentapp/view/constant/routes/AppColors.dart';
-import 'package:studentapp/viewmodel/services/dropdownServices/DepartmentController.dart';
-import 'package:studentapp/viewmodel/services/dropdownServices/SemesterController.dart';
 import '../../../../model/subjectModel.dart';
 import '../../../../viewmodel/services/studentscreenService/studentScreenSearchController.dart';
 import '../../RoutineCard/widgets/DropdownForRoutine.dart';
 
 class SearchScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
-  final StudentSearchController _searchController = Get.put(StudentSearchController());
+  final StudentSearchController _searchController =
+      Get.put(StudentSearchController());
   final _storage = GetStorage();
   late Rx<List<Color>> _backgroundGradientColors = Rx<List<Color>>([]);
   late Rx<String> _greeting = Rx<String>('');
@@ -61,7 +60,7 @@ class SearchScreen extends StatelessWidget {
                     _storage.write('studentId', value);
                   },
                   decoration: InputDecoration(
-                 hintText: "Enter Your Student Id",
+                    hintText: "Enter Your Student Id",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -77,15 +76,17 @@ class SearchScreen extends StatelessWidget {
                   _searchController.search(_controller.text);
                 },
                 style: ElevatedButton.styleFrom(
-
                   backgroundColor: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                  child: Text('Search', style: TextStyle(fontSize: 16,color: AppColors.textwhite)),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                  child: Text('Search',
+                      style:
+                          TextStyle(fontSize: 16, color: AppColors.textwhite)),
                 ),
               ),
               const SizedBox(height: 16),
@@ -106,68 +107,88 @@ class SearchScreen extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                margin: const EdgeInsets.symmetric(vertical: 10),
-                                color: _backgroundGradientColors.value.isNotEmpty
-                                    ? _backgroundGradientColors.value[0].withOpacity(0.8)
-                                    : Colors.white,
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                color:
+                                    _backgroundGradientColors.value.isNotEmpty
+                                        ? _backgroundGradientColors.value[0]
+                                            .withOpacity(0.8)
+                                        : Colors.white,
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Name: ${_searchController.student.value!.name}',
-                                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
+                                        style: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
                                         'Semester: ${_searchController.student.value!.sem}',
-                                        style: const TextStyle(fontSize: 18,color: Colors.white),
+                                        style: const TextStyle(
+                                            fontSize: 18, color: Colors.white),
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
                                         'Class Roll: ${_searchController.student.value!.classRoll}',
-                                        style: const TextStyle(fontSize: 18,color: Colors.white),
+                                        style: const TextStyle(
+                                            fontSize: 18, color: Colors.white),
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
                                         'Department Name: ${_searchController.student.value!.departmentName}',
-                                        style: const TextStyle(fontSize: 18,color: Colors.white),
+                                        style: const TextStyle(
+                                            fontSize: 18, color: Colors.white),
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
                                         'ID: ${_searchController.student.value!.id}',
-                                        style: const TextStyle(fontSize: 18,color: Colors.white),
+                                        style: const TextStyle(
+                                            fontSize: 18, color: Colors.white),
                                       ),
                                       const SizedBox(height: 16),
                                       DropdownButton<String>(
-
-                                        value: _searchController.selectedSubject.value ?? '',
+                                        value: _searchController
+                                                .selectedSubject.value ??
+                                            '',
                                         onChanged: (newValue) {
-                                          _searchController.selectedSubject.value = newValue!;
-                                          _searchController.fetchSubjectDetails(newValue);
+                                          _searchController.selectedSubject
+                                              .value = newValue!;
+                                          _searchController
+                                              .fetchSubjectDetails(newValue);
                                         },
                                         isExpanded: true,
                                         items: [
                                           const DropdownMenuItem(
-
                                             value: '',
-                                            child: Text('Select a Subject',style: TextStyle(color: Colors.white),),
+                                            child: Text(
+                                              'Select a Subject',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
                                           ),
-                                          ..._searchController.student.value!.subjects.map((subject) {
+                                          ..._searchController
+                                              .student.value!.subjects
+                                              .map((subject) {
                                             return DropdownMenuItem(
-                                              value: subject.subjectId.toString(),
+                                              value:
+                                                  subject.subjectId.toString(),
                                               child: Text(
-style: TextStyle(color: Colors.white),
+                                                style: TextStyle(
+                                                    color: Colors.white),
                                                 subject.subjectName,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             );
                                           }).toList(),
                                         ],
-dropdownColor: Colors.black,
+                                        dropdownColor: Colors.black,
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -179,45 +200,60 @@ dropdownColor: Colors.black,
                                 }
 
                                 final subject = _searchController.subject.value;
-                                if (subject == null || subject.subName == null) {
+                                if (subject == null ||
+                                    subject.subName == null) {
                                   return Container();
                                 }
 
                                 return Center(
                                   child: GestureDetector(
-                                    onTap: () => _showBarChartDialog(context, subject),
+                                    onTap: () =>
+                                        _showBarChartDialog(context, subject),
                                     child: Card(
                                       elevation: 8,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15),
                                       ),
-                                      margin: const EdgeInsets.symmetric(vertical: 10),
-                                      color: _backgroundGradientColors.value.isNotEmpty
-                                          ? _backgroundGradientColors.value[0].withOpacity(0.8)
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      color: _backgroundGradientColors
+                                              .value.isNotEmpty
+                                          ? _backgroundGradientColors.value[0]
+                                              .withOpacity(0.8)
                                           : Colors.white,
                                       child: Padding(
                                         padding: const EdgeInsets.all(16.0),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Subject Name: ${subject.subName}',
-                                              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                             const SizedBox(height: 8),
                                             Text(
                                               'Classes Attended: ${subject.classAttended}',
-                                              style: const TextStyle(fontSize: 18,color: Colors.white),
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white),
                                             ),
                                             const SizedBox(height: 8),
                                             Text(
                                               'Total Classes: ${subject.totalClass}',
-                                              style: const TextStyle(fontSize: 18,color: Colors.white),
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white),
                                             ),
                                             const SizedBox(height: 8),
                                             Text(
                                               'Max Attendance: ${subject.maxAttendance}',
-                                              style: const TextStyle(fontSize: 18,color: Colors.white),
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white),
                                             ),
                                             const SizedBox(height: 16),
                                           ],
@@ -264,103 +300,6 @@ dropdownColor: Colors.black,
     _greeting.value = greeting;
   }
 }
-//
-// void _showBarChartDialog(BuildContext context, Subjectforchart subject) {
-//   showDialog(
-//     context: context,
-//     builder: (BuildContext context) {
-//       return AlertDialog(
-//         title: const Text('Attendance Chart'),
-//         shadowColor: Colors.black,
-//         backgroundColor: Colors.white,
-//         content: SizedBox(
-//           height: 400,
-//           child: BarChart(
-//             BarChartData(
-//               alignment: BarChartAlignment.spaceEvenly,
-//               barGroups: [
-//                 BarChartGroupData(
-//                   x: 0,
-//                   barRods: [
-//                     BarChartRodData(
-//                       toY: subject.totalClass.toDouble(),
-//                       color: Colors.blue,
-//                       width: 20,
-//                     ),
-//                   ],
-//                   showingTooltipIndicators: [0],
-//                 ),
-//                 BarChartGroupData(
-//                   x: 1,
-//                   barRods: [
-//                     BarChartRodData(
-//                       toY: subject.classAttended.toDouble(),
-//                       color: Colors.greenAccent,
-//                       width: 20,
-//                     ),
-//                   ],
-//                   showingTooltipIndicators: [0],
-//                 ),
-//                 BarChartGroupData(
-//                   x: 2,
-//                   barRods: [
-//                     BarChartRodData(
-//                       toY: subject.maxAttendance.toDouble(),
-//                       color: Colors.redAccent,
-//                       width: 20,
-//                     ),
-//                   ],
-//                   showingTooltipIndicators: [0],
-//                 ),
-//               ],
-//               titlesData: FlTitlesData(
-//                 bottomTitles: AxisTitles(
-//                   sideTitles: SideTitles(
-//                     showTitles: true,
-//                     getTitlesWidget: (double value, TitleMeta meta) {
-//                       switch (value.toInt()) {
-//                         case 0:
-//                           return const Text('Total');
-//                         case 1:
-//                           return const Text('Attended');
-//                         case 2:
-//                           return const Text('Max Attendance');
-//                         default:
-//                           return const Text('');
-//                       }
-//                     },
-//                   ),
-//                 ),
-//                 leftTitles: AxisTitles(
-//                   sideTitles: SideTitles(
-//                     showTitles: true,
-//                     reservedSize: 40,
-//                     getTitlesWidget: (double value, TitleMeta meta) {
-//                       if (value % 5 == 0) {
-//                         return Text('${value.toInt()}');
-//                       } else {
-//                         return Container();
-//                       }
-//                     },
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ),
-//         actions: [
-//           TextButton(
-//             onPressed: () {
-//               Navigator.of(context).pop();
-//             },
-//             child: const Text('Close'),
-//           ),
-//         ],
-//       );
-//     },
-//   );
-// }
-
 
 void _showBarChartDialog(BuildContext context, Subjectforchart subject) {
   showDialog(
@@ -371,7 +310,6 @@ void _showBarChartDialog(BuildContext context, Subjectforchart subject) {
           padding: EdgeInsets.only(bottom: 16.0),
           child: Text('Attendance Chart'),
         ),
-
         shadowColor: Colors.black,
         backgroundColor: Colors.white,
         content: Column(

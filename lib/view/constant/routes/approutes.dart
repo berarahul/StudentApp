@@ -5,12 +5,10 @@ import 'package:studentapp/view/Screens/SearchStudentCard/Widgets/SearchStudent.
 import '../../Screens/StudentInfromationCard.dart';
 
 class AppRoutes {
-
   static const String studentDetails = '/studentDetails';
   static const String routineView = '/routineView';
 
   static List<GetPage> routes = [
-
     GetPage(name: studentDetails, page: () => SearchScreen()),
     GetPage(name: routineView, page: () => DropdownScreenForRoutine()),
   ];

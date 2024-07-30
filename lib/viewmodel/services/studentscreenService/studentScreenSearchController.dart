@@ -1,4 +1,3 @@
-
 // import 'package:get/get.dart';
 // import 'package:http/http.dart' as http;
 // import 'dart:convert';
@@ -36,7 +35,6 @@
 //     return storage.read('studentId'); // Retrieve the stored student ID
 //   }
 // }
-
 
 //
 // import 'package:get/get.dart';
@@ -110,10 +108,10 @@ import 'package:http/http.dart' as http;
 import 'package:studentapp/viewmodel/services/studentscreenService/studentIdstorage/student%20idStore.dart';
 import 'dart:convert';
 
- // Assuming Student model is defined in Student.dart
+// Assuming Student model is defined in Student.dart
 import '../../../model/SubjectAndStudentModel.dart';
 import '../../../model/subjectModel.dart';
- // Import your StudentIdStorage service
+// Import your StudentIdStorage service
 
 class StudentSearchController extends GetxController {
   var student = Rxn<Student>();
@@ -132,8 +130,8 @@ class StudentSearchController extends GetxController {
 
       if (res.statusCode == 200) {
         student.value = Student.fromJson(jsonDecode(res.body));
-        _studentIdStorage.writeStudentId(
-            query); // Store the student ID in local storage
+        _studentIdStorage
+            .writeStudentId(query); // Store the student ID in local storage
       } else {
         Get.snackbar('Error', 'Failed to fetch data');
       }

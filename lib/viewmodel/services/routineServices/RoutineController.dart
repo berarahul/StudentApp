@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../../data/apiCall.dart';
 import '../../../model/ClassRoutineModel.dart';
 
-
 class ScheduleController extends GetxController {
   var schedule = <String, List<Schedule>>{}.obs;
   var isLoading = true.obs;

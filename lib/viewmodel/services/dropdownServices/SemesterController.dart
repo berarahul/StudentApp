@@ -31,6 +31,7 @@ class SemesterController extends GetxController {
     storage.write('selectedSemesterId', id);
     print('Selected Semester ID: $id has been stored.');
   }
+
   void clearSemester() {
     semesterList.clear();
   }

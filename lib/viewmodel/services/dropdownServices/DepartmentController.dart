@@ -1,6 +1,3 @@
-
-
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../../model/alldepartmentModel.dart';
@@ -36,7 +33,8 @@ class DepartmentController extends GetxController {
     storage.write('selectedDepartmentId', id);
     print('Selected Department ID: $id has been stored.');
   }
-  void cleardepartmentlist(){
+
+  void cleardepartmentlist() {
     departmentList.clear();
   }
 }
